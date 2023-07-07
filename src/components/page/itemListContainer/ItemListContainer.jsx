@@ -1,14 +1,32 @@
-import { Box, Button, Typography } from "@mui/material";
+import { useState, useEffect } from "react";
+import ItemList from "./itemList";
+import { productos } from "../../productos";
+import { useParams } from "react-router-dom";
 
-const ItemListContainer = ({ greeting, cambiarSaludo }) => {
 
-  return (
-    <Box sx={{textAlign:"center"}}>
-      <Typography sx={{fontSize: "20px"}}>{greeting}</Typography>
-      <Button variant="outlined" size="small" onClick={() => cambiarSaludo("Esta página web se encuentra en desarrollo...")}>Cambiar saludo</Button>
+const ItemListContainer = () => {
+  const [items, setItems] = useState([]);
+  const [error, setError] = useState({});
 
-    </Box>
-  );
+  const { categoryName } = useParams();
+
+  useEffect(() => {
+    let productosFiltrados = productos.filter(
+      (elemento) => elemento.category === categoryName
+    );
+
+    const tarea = new Promise((resolve, reject) => {
+      resolve(categoryName === undefined ? productos : productosFiltrados);
+
+    });
+
+    tarea
+      .then((respuesta) => setItems(respuesta))
+      .catch((error) => setError(error));
+
+  }, [categoryName]);
+
+  return <ItemList items={items} />;
 };
 
 export default ItemListContainer;

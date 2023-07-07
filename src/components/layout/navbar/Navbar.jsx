@@ -1,24 +1,35 @@
-
-import { Box, Container, Link, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import CartWidget from "../../common/cartWidget/CartWidget";
-
+import "./Navbar.css";
 
 const Navbar = () => {
-  const preventDefault = (event) => event.preventDefault()
-
   return (
-    <Container>
+    <div>
+      <div>
+        <div className={"containerNavbar"}>
+          <Link className={"categories-link"} to="/">
+            <h4>TH SERVICIOS</h4>
+          </Link>
 
-      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center", marginTop:"30px"}}>
-        <Typography >LOGO</Typography>
-        <Typography sx={{ minWidth: 200 }}><Link href="#" underline="hover" onClick={preventDefault}>HOME</Link></Typography>
-        <Typography sx={{ minWidth: 200 }}><Link href="#" underline="hover" onClick={preventDefault}>CASAS EN VENTA</Link></Typography>
-        <Typography sx={{ minWidth: 200 }}><Link href="#" underline="hover" onClick={preventDefault}>ALQUILERES</Link></Typography>
-        <Typography sx={{ minWidth: 200 }}><Link href="#" underline="hover" onClick={preventDefault}>LOTES</Link></Typography>
-        <CartWidget />
-      </Box>
+          <ul className="categories">
+            <Link className={"categories-link"} to="/">
+              TODAS
+            </Link>
+            <Link className={"categories-link"} to="/category/casas">
+              CASAS
+            </Link>
+            <Link className={"categories-link"} to="/category/duplex">
+              DÚPLEX
+            </Link>
+            <Link className={"categories-link"} to="/category/departamentos">
+              DEPARTAMENTOS
+            </Link>
+          </ul>
 
-    </Container>
+          <CartWidget />
+        </div>
+      </div>
+    </div>
   );
 };
 

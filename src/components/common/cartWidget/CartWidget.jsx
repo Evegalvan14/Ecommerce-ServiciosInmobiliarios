@@ -1,16 +1,19 @@
-import { ShoppingCart } from "@mui/icons-material"
-import { Badge, Container, Tooltip } from "@mui/material"
+import { Badge } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+import { Link } from "react-router-dom";
 
 const CartWidget = () => {
   return (
-    <Container>
-      <Tooltip title="Mis Compras">
-        <Badge badgeContent={1} color="primary">
-        <ShoppingCart color="action" />
-      </Badge>
-        </Tooltip>
-    </Container>
-  )
-}
+    <>
+      <Link to="/cart" >
+        <Badge badgeContent={1} color="warning" sx={{ marginRight: 5 }}>
+          <ShoppingCartIcon color="main" fontSize="medium"  />
+        </Badge>
+      </Link>
+     
+    </>
+  );
+};
 
-export default CartWidget
+export default CartWidget;
