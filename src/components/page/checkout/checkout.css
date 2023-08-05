@@ -1,0 +1,28 @@
+.checkout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 65vh;
+}
+
+.checkout-form {
+    width: 100%;
+    max-width: 400px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.checkout-input {
+    width: 100%; 
+    margin-bottom: 10px; 
+}
+
+/* Estilos del mensaje de error en el input */
+.MuiFormHelperText-root.Mui-error {
+    color: #f44336; 
+    font-size: 14px; 
+    text-align: left; 
+    margin-top: 4px; 
+}
